@@ -1,0 +1,25 @@
+$break-point1: 800px;
+$break-point2: 525px;
+$app-backgound: #0f1228;
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.app {
+	min-height: 100vh;
+	color: gray;
+	// background-color: $app-backgound;
+	background: radial-gradient(#20264d, $app-backgound);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+@media screen and (max-width: $break-point1) {
+	.app {
+		flex-direction: column;
+	}
+}

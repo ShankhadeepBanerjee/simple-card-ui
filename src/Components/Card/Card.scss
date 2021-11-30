@@ -1,0 +1,167 @@
+@import "../App/App.scss";
+
+$card-padding: 20px;
+$card-border-radius: 25px;
+
+$card-background: #282e50;
+$card-text-color: #9da4c7;
+
+@mixin flex-and-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	min-width: 200px;
+	width: 40%;
+	max-width: 500px;
+	height: fit-content;
+	margin: 20px;
+	padding: $card-padding;
+	border-radius: $card-border-radius;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background: $card-background;
+	color: $card-text-color;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+
+	.icon {
+		@include flex-and-center();
+		max-width: 100%;
+		span {
+			@include flex-and-center();
+			width: fit-content;
+			padding: 20px;
+			border-radius: 50%;
+			border-top-left-radius: 45px;
+			border-bottom-right-radius: 45px;
+			background: #495079;
+			position: relative;
+
+			img {
+				width: 150px;
+				max-width: 100%;
+				z-index: 1;
+			}
+		}
+	}
+
+	.heading {
+		@include flex-and-center();
+		margin: 10px 0;
+	}
+
+	.description {
+		margin: 10px 0;
+		font-size: 1rem;
+		text-align: center;
+	}
+
+	.action {
+		@include flex-and-center();
+		margin: 10px 0;
+		width: 100%;
+
+		.btn {
+			@include flex-and-center();
+			width: 60%;
+			background: #495079;
+			height: 40px;
+			color: #b9bedb;
+			border-radius: 10px;
+			font-weight: 700;
+			transition: background 0.25s linear;
+		}
+		.btn:hover {
+			background: linear-gradient(to bottom, #a792f2af, #a692f2);
+			color: #fdfaff;
+			cursor: pointer;
+			transition: background 0.25s linear;
+		}
+		.btn:active {
+			background: linear-gradient(to bottom, #a692f2, #a792f2af);
+		}
+	}
+}
+
+.card:hover {
+	box-shadow: -3px 5px 10px 1px #0f1228;
+	.icon span {
+		animation: exmp 2s linear 0s infinite alternate;
+	}
+}
+
+@keyframes exmp {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.05);
+		box-shadow: 1px 1px 10px 10px #20264d;
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@media screen and (max-width: $break-point1) {
+	.item1 {
+		grid-area: icon;
+	}
+	.item2 {
+		grid-area: header;
+	}
+	.item3 {
+		grid-area: desc;
+	}
+	.item4 {
+		grid-area: action;
+	}
+
+	.card {
+		font-size: 0.8rem;
+		width: 85%;
+		max-width: none;
+		margin: 20px 0;
+		padding: 5px;
+		display: grid;
+		grid-template-areas:
+			"icon desc desc desc "
+			"icon desc desc desc "
+			"header  action  action action";
+
+		> * {
+			margin: 10px;
+		}
+
+		.icon span img {
+			width: 100px;
+		}
+		.heading {
+			margin: 0;
+			text-align: center;
+		}
+	}
+}
+
+@media screen and (max-width: $break-point2) {
+	.card {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 0.8rem;
+
+		.icon span img {
+			width: 70px;
+		}
+
+		.description {
+			width: 80%;
+			font-size: 0.6rem;
+		}
+	}
+}
